@@ -6,7 +6,7 @@ void BOOKmeet(Meet&meet, std::vector <Meet>&meets,std::string&str,bool canprint,
 {
     meet.book(str);
     bool canadd=true;
-    for(int i=0;i<meets.size()&&meets.size()>1;i++)
+    for(int i=0;i<meets.size()&&meets.size()>=1;i++)
     {
         if(((meets[i].getData()==meet.getData())
         &&((meet.getStartmeet()<meets[i].getEndmeet() && meet.getStartmeet()>=meets[i].getStartmeet())
@@ -17,7 +17,7 @@ void BOOKmeet(Meet&meet, std::vector <Meet>&meets,std::string&str,bool canprint,
         {
             if(canprint)
             {
-                std::cout<<"You can't add this meeting! 404\n";
+                std::cout<<"You can't add this meeting!\n";
                 //std::cout<<meets[i].getData()<<" -. "<<meet.getData()<<"\n";
             }
             if(mergeinfo)
@@ -33,7 +33,7 @@ void BOOKmeet(Meet&meet, std::vector <Meet>&meets,std::string&str,bool canprint,
                     if(in=="yes")
                     {
                         auto it=meets.begin();
-                        for(int j=0;j<meets.size()&&meets.size()>1;j++,it++)
+                        for(int j=0;j<meets.size()&&meets.size()>=1;j++,it++)
                         {
                             if(((meets[j].getData()==meet.getData())
                             &&((meet.getStartmeet()<meets[j].getEndmeet() && meet.getStartmeet()>=meets[j].getStartmeet())
@@ -65,7 +65,10 @@ void BOOKmeet(Meet&meet, std::vector <Meet>&meets,std::string&str,bool canprint,
         
     }
     if(canadd)
+    {
+        std::cout<<"Meet addes successful!\n";
         meets.push_back(meet);
+    }
     return;
 }
 
